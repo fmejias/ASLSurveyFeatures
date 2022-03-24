@@ -39,7 +39,7 @@ function listVideos() {
             '<span>',
               '<div>',
                 '<br/>',
-                '<video width="320" height="240" onmouseover="this.play()" onmouseout="this.pause();" controls>',
+                '<video width="320" height="240" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" controls>',
                   '<source src="' + videoUrl + '" type="video/mp4">',
                 '</video>',
               '</div>',
@@ -62,7 +62,7 @@ function listVideos() {
     });
 
     var htmlTemplate = [
-      '<div class="container">',
+      '<div>',
         getHtml(videos),
       '</div>',
     ]

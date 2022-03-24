@@ -1,0 +1,17 @@
+body {
+    background-color: white;
+}
+
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container > span
+{
+    margin: 0 15px;
+    flex: 0 0 auto;
+}
