@@ -1,72 +1,49 @@
-var albumBucketName = 'aslsurveybucket';
-
-// Initialize the Amazon Cognito credentials provider
-AWS.config.region = 'us-east-1'; // Region
-AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-1:443291c0-1cbe-48ca-bbc4-e55f88789dd4',
-});
-
-// Create a new service object
-var s3 = new AWS.S3({
-  apiVersion: '2006-03-01',
-  params: {Bucket: albumBucketName}
-});
-
 // A utility function to create HTML.
 function getHtml(template) {
   return template.join('\n');
 }
 
-// Show the videos in the website
-function listVideos() {
-  var albumVideosKey = encodeURIComponent('feature1Videos') + '/';
-  s3.listObjects({Prefix: albumVideosKey}, function(err, data) {
-    if (err) {
-      return alert('There was an error viewing your album: ' + err.message);
-    }
-    // 'this' references the AWS.Request instance that represents the response
-    var href = this.request.httpRequest.endpoint.href;
-    var bucketUrl = href + albumBucketName + '/';
+function displayVideo(iconSpan) {
+  iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif' + ")";
+}
 
-    var numVideos = 0;
-    var videos = data.Contents.map(function(video) {
-      var videoKey = video.Key;
-      if (videoKey != albumVideosKey) {
-        var videoUrl = bucketUrl + encodeURIComponent(videoKey);
-        numVideos = numVideos + 1;
-        if (numVideos === 2) {
-          return getHtml([
-            '<span>',
-              '<div>',
-                '<br/>',
-                '<video width="320" height="240" onmouseover="this.play()" onmouseout="this.pause();this.currentTime=0;" controls>',
-                  '<source src="' + videoUrl + '" type="video/mp4">',
-                '</video>',
-              '</div>',
-            '</span>',
-          ]);
-        }
-        else {
-          return getHtml([
-            '<span>',
-              '<div>',
-                '<br/>',
-                '<video width="320" height="240" controls>',
-                  '<source src="' + videoUrl + '" type="video/mp4">',
-                '</video>',
-              '</div>',
-            '</span>',
-          ]);
-        }
-      }
-    });
+function removeVideo(iconSpan) {
+  iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png' + ")";
+}
 
-    var htmlTemplate = [
-      '<div>',
-        getHtml(videos),
-      '</div>',
-    ]
-    document.getElementById('viewer').innerHTML = getHtml(htmlTemplate);
-    document.getElementsByTagName('img')[0].setAttribute('style', 'display:none;');
-  });
+// Show the 3 icons in the website
+function listIcons() {
+  // List first icon
+  var icons = '';
+  var firstIcon = getHtml([
+    '<span class="icon" id="firstIcon" onmouseover="displayVideo(this);" onmouseout="removeVideo(this);">',
+    '</span>',
+  ]);
+  icons = icons + firstIcon;
+
+  var secondIcon = getHtml([
+    '<span class="icon">',
+    '</span>',
+  ]);
+  icons = icons + secondIcon;
+
+  var thirdIcon = getHtml([
+    '<span class="icon" id="thirdIcon" animationend="displayVideo(this);" onmouseout="removeVideo(this);">',
+    '</span>',
+  ]);
+  icons = icons + thirdIcon;
+
+  var htmlTemplate = [
+    '<div class="container">',
+      icons,
+    '</div>',
+  ]
+
+  console.log(htmlTemplate);
+  document.getElementById('viewer').innerHTML = getHtml(htmlTemplate);
+
+  const element = document.getElementById("thirdIcon");
+  element.addEventListener("animationend", () => {
+    element.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif' + ")";
+  }, {});
 }
