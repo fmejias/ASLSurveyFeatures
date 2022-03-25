@@ -12,9 +12,9 @@ body {
 
 .icon {
     background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png');
-    background-size: 80px;
-    height: 80px;
-    width: 80px;
+    background-size: 150px;
+    height: 150px;
+    width: 150px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;

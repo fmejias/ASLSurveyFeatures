@@ -1,0 +1,53 @@
+body {
+    background-color: white;
+}
+
+.container
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.icon {
+    background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature3/Apple.png');
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    width: 150px;
+    background-color: #bbb;
+    display: inline-block;
+  }
+
+.container > span
+{
+    margin: 0 125px;
+    flex: 0 0 auto;
+}
+
+#thirdIcon:hover{
+    animation: slide 0.5s linear 1;
+    animation-fill-mode: backwards;
+}
+
+@keyframes slide{
+    0%{
+      transform: translate3d(0, 0, 0);
+      opacity: 0;
+    }
+    100%{
+      transform: translate3d(-50px, 0, 0);
+      opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
