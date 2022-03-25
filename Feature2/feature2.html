@@ -3,6 +3,13 @@
   <head>
     <link rel="stylesheet" href="styles.css">
     <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1096.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip({ content: '<img width="80px" height="80px" src="https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif" />' });
+      });
+    </script>
   </head>
   <body>
     <div id="viewer" />

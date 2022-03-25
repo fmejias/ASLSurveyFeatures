@@ -22,7 +22,7 @@ function listIcons() {
   icons = icons + firstIcon;
 
   var secondIcon = getHtml([
-    '<span class="icon">',
+    '<span class="icon" id="secondIcon" href="#" data-toggle="tooltip" data-placement="top" title="tooltip">',
     '</span>',
   ]);
   icons = icons + secondIcon;
@@ -39,7 +39,6 @@ function listIcons() {
     '</div>',
   ]
 
-  console.log(htmlTemplate);
   document.getElementById('viewer').innerHTML = getHtml(htmlTemplate);
 
   const element = document.getElementById("thirdIcon");
