@@ -33,6 +33,20 @@ function listIcons() {
   ]);
   icons = icons + thirdIcon;
 
+  var fourthIcon = getHtml([
+    '<div class="flip-card">',
+    '<div class="flip-card-inner">',
+    '<div class="flip-card-front">',
+    '<img src="https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png" alt="Avatar" style="width:150px;height:150px;">',
+    '</div>',
+    '<div class="flip-card-back">',
+    '<img src="https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif" alt="Avatar" style="width:150px;height:150px;border-radius:50%;">',
+    '</div>',
+    '</div>',
+    '</div>',
+  ]);
+  icons = icons + fourthIcon;
+
   var htmlTemplate = [
     '<div class="container">',
       icons,
