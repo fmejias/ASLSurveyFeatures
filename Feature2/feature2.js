@@ -7,6 +7,14 @@ function displayVideo(iconSpan) {
   iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif' + ")";
 }
 
+function displayHiddenVideo(iconSpan) {
+  iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif' + ")";
+}
+
+function removeHiddenVideo(iconSpan) {
+  iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png' + ")";
+}
+
 function removeVideo(iconSpan) {
   iconSpan.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png' + ")";
 }
@@ -28,8 +36,9 @@ function listIcons() {
   icons = icons + secondIcon;
 
   var thirdIcon = getHtml([
-    '<span class="icon" id="thirdIcon" animationend="displayVideo(this);" onmouseout="removeVideo(this);">',
-    '</span>',
+    '<div class="hiddenIcon" onmouseover="displayHiddenVideo(this);">',
+    '<img id="slide" src="https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png" alt="Avatar" style="width:150px;height:150px;border-radius:50%;">',
+    '</div>',
   ]);
   icons = icons + thirdIcon;
 
@@ -54,9 +63,4 @@ function listIcons() {
   ]
 
   document.getElementById('viewer').innerHTML = getHtml(htmlTemplate);
-
-  const element = document.getElementById("thirdIcon");
-  element.addEventListener("animationend", () => {
-    element.style.backgroundImage="url(" + 'https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif' + ")";
-  }, {});
 }

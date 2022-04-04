@@ -31,22 +31,37 @@ body {
 }
 
 .hiddenIcon {
-  /* background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature2/signvideo.gif'); */
+  background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png');
   background-size: 150px;
   height: 150px;
   width: 150px;
-  background-color: red;
+  background-color: #bbb;
   border-radius: 50%;
-  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 100px; 
+  border: 1px solid black;
 }
 
 #slide {
   position: absolute;
-  left: -100px;
-  width: 100px;
-  height: 100px;
+  left: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   background: blue;
   transition: 1s;
+}
+
+.hiddenIcon:hover #slide {
+  transition: 1s;
+  left: -150px;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -76,6 +91,11 @@ body {
 #thirdIcon:hover{
     animation: slide 0.5s linear 1;
     animation-fill-mode: backwards;
+}
+
+.slide-icon-inner:hover{
+  animation: slide 0.5s linear 1;
+  animation-fill-mode: backwards;
 }
 
 @keyframes slide{
