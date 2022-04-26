@@ -30,7 +30,7 @@ function listIcons() {
   icons = icons + firstIcon;
 
   var secondIcon = getHtml([
-    '<span class="icon" id="secondIcon" href="#" data-toggle="tooltip" data-placement="top" title="tooltip">',
+    '<span class="iconTest" id="secondIcon" href="#" data-toggle="tooltip" data-placement="top" title="tooltip">',
     '</span>',
   ]);
   icons = icons + secondIcon;

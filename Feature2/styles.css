@@ -17,8 +17,27 @@ body {
     width: 150px;
     background-color: #bbb;
     border-radius: 50%;
-    display: inline-block;
+    display: flex;
   }
+
+.iconTest {
+  background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png');
+  background-size: 150px;
+  height: 150px;
+  width: 150px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: flex;
+}
+
+.iconTest:hover::after {
+  content: "";
+  margin-top: -5px;
+  margin-left: 55px;
+  border-width: 20px;
+  border-style: solid;
+  border-color: black transparent transparent  transparent;
+}
 
 .flipIcon {
   background-image: url('https://aslsurveybucket.s3.amazonaws.com/feature2/icon.png');
